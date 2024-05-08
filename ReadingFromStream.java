@@ -11,27 +11,23 @@ public class ReadingFromStream extends Thread{
 
 @Override
 public void run() {
-    try {
+    
         String line;
-        while ((line = in.readLine()) != null) {
-            if (line.equals("exit")) {
-                break;
-            }
-            System.out.println("Client -> received message: " + line);
-        }
-    } catch (IOException e) {
-        if (!(e instanceof java.net.SocketException && e.getMessage().equals("Socket closed"))) {
-            System.err.println("Client -> Error reading from server: " + e.getMessage());
-        }
-    } finally {
         try {
-            in.close();
-        } catch (IOException e) {
-            // Handle closing exception if needed
-            e.printStackTrace();
-        }
-    }
+			while ((line = in.readLine()) != null) {
+			    if (line.equals("exit")) {
+			        break;
+			    }
+			    System.out.println("Client -> received message: " + line);
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+  
+    
+}
 }
 
 
-}
